@@ -69,6 +69,12 @@ class GameScene: SKScene {
             // スプライトにアクションを設定する
             sprite.run(repeatScrollGround)
             
+            // スプライトに物理演算を設定する
+            sprite.physicsBody = SKPhysicsBody(rectangleOf: groundTexture.size())
+
+            // 衝突の時に動かないように設定する
+            sprite.physicsBody?.isDynamic = false
+            
             // スプライトを追加する
             scrollNode.addChild(sprite)
         }
