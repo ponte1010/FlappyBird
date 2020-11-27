@@ -71,7 +71,7 @@ class GameScene: SKScene {
             
             // スプライトに物理演算を設定する
             sprite.physicsBody = SKPhysicsBody(rectangleOf: groundTexture.size())
-
+            
             // 衝突の時に動かないように設定する
             sprite.physicsBody?.isDynamic = false
             
@@ -166,7 +166,7 @@ class GameScene: SKScene {
             
             // スプライトに物理演算を設定する
             under.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
-
+            
             // 衝突の時に動かないように設定する
             under.physicsBody?.isDynamic = false
             
@@ -178,7 +178,7 @@ class GameScene: SKScene {
             
             // スプライトに物理演算を設定する
             upper.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
-
+            
             // 衝突の時に動かないように設定する
             upper.physicsBody?.isDynamic = false
             
@@ -221,5 +221,14 @@ class GameScene: SKScene {
         
         // スプライトを追加する
         addChild(bird)
+    }
+    
+    // 画面をタップした時に呼ばれる
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        // 鳥の速度をゼロにする
+        bird.physicsBody?.velocity = CGVector.zero
+        
+        // 鳥に縦方向の力を与える
+        bird.physicsBody?.applyImpulse(CGVector(dx: 0, dy: 15))
     }
 }
