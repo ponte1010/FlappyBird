@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		188616522570B7F000AE39BB /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188616512570B7F000AE39BB /* GameScene.swift */; };
 		188C67B0256CF03200033DC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C67AF256CF03200033DC9 /* AppDelegate.swift */; };
 		188C67B2256CF03200033DC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C67B1256CF03200033DC9 /* SceneDelegate.swift */; };
 		188C67B4256CF03200033DC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188C67B3256CF03200033DC9 /* ViewController.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		188616512570B7F000AE39BB /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		188C67AC256CF03200033DC9 /* FlappyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlappyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188C67AF256CF03200033DC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		188C67B1256CF03200033DC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				188C67AF256CF03200033DC9 /* AppDelegate.swift */,
 				188C67B1256CF03200033DC9 /* SceneDelegate.swift */,
 				188C67B3256CF03200033DC9 /* ViewController.swift */,
+				188616512570B7F000AE39BB /* GameScene.swift */,
 				188C67B5256CF03200033DC9 /* Main.storyboard */,
 				188C67B8256CF03600033DC9 /* Assets.xcassets */,
 				188C67BA256CF03600033DC9 /* LaunchScreen.storyboard */,
@@ -140,6 +143,7 @@
 			files = (
 				188C67B4256CF03200033DC9 /* ViewController.swift in Sources */,
 				188C67B0256CF03200033DC9 /* AppDelegate.swift in Sources */,
+				188616522570B7F000AE39BB /* GameScene.swift in Sources */,
 				188C67B2256CF03200033DC9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
