@@ -164,11 +164,23 @@ class GameScene: SKScene {
             let under = SKSpriteNode(texture: wallTexture)
             under.position = CGPoint(x: 0, y: under_wall_y)
             
+            // スプライトに物理演算を設定する
+            under.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
+
+            // 衝突の時に動かないように設定する
+            under.physicsBody?.isDynamic = false
+            
             wall.addChild(under)
             
             // 上側の壁を作成
             let upper = SKSpriteNode(texture: wallTexture)
             upper.position = CGPoint(x: 0, y: under_wall_y + wallTexture.size().height + slit_length)
+            
+            // スプライトに物理演算を設定する
+            upper.physicsBody = SKPhysicsBody(rectangleOf: wallTexture.size())
+
+            // 衝突の時に動かないように設定する
+            upper.physicsBody?.isDynamic = false
             
             wall.addChild(upper)
             
