@@ -195,6 +195,9 @@ class GameScene: SKScene {
         bird = SKSpriteNode(texture: birdTextureA)
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         
+        // 物理演算を設定
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2)
+        
         // アニメーションを設定
         bird.run(flap)
         
