@@ -35,6 +35,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // BGMとして流すファイル
     let musicURL = Bundle.main.url(forResource: "bgm_maoudamashii_8bit27", withExtension: "m4a")
     
+    // 効果音
+    let sound1 = SKAction.playSoundFileNamed("cancel.mp3", waitForCompletion: true)
+    let sound2 = SKAction.playSoundFileNamed("cursor.mp3", waitForCompletion: true)
+    
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
         
@@ -318,6 +322,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("ItemScoreUp")
             itemScore += 1
             itemScoreLabelNode.text = "Item:\(itemScore)"
+            self.run(sound1)
             ramenNode.removeAllChildren()
         } else {
             // 壁か地面と衝突した
@@ -329,6 +334,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             bird.physicsBody?.collisionBitMask = groundCategory
             
             let roll = SKAction.rotate(byAngle: CGFloat(Double.pi) * CGFloat(bird.position.y) * 0.01, duration:1)
+            self.run(sound2)
             bird.run(roll, completion:{
                 self.bird.speed = 0
             })
@@ -391,7 +397,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movingDistance = CGFloat(self.frame.size.width + ramenTexture.size().width * 3)
         
         // 画面外まで移動するアクションを作成
-        let moveRamen = SKAction.moveBy(x: -movingDistance, y: 0, duration:4)
+        let moveRamen = SKAction.moveBy(x: -movingDistance, y: 0, duration:2)
         
         // 自身を取り除くアクションを作成
         let removeRamen = SKAction.removeFromParent()
