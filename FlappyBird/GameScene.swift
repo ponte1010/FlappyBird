@@ -25,18 +25,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var scoreLabelNode:SKLabelNode!
     var bestScoreLabelNode:SKLabelNode!
     let userDefaults:UserDefaults = UserDefaults.standard
+    var itemScore = 0
+    var itemScoreLabelNode: SKLabelNode!
     
     // BGM用のパラメーターを作成
     var backgroundMusic = SKAudioNode()
-    // BGMで流れるゲーム音楽
+    // BGMとして流すファイル
     let musicURL = Bundle.main.url(forResource: "bgm_maoudamashii_8bit27", withExtension: "m4a")
     
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
         
-        // BGM用の音楽をセットする
+        // BGMをセット
         backgroundMusic = SKAudioNode(url: musicURL!)
-        // GameSceneに追加する。
         addChild(backgroundMusic)
         
         // 重力を設定
@@ -356,5 +357,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let bestScore = userDefaults.integer(forKey: "BEST")
         bestScoreLabelNode.text = "Best Score:\(bestScore)"
         self.addChild(bestScoreLabelNode)
+        
+        itemScore = 0
+        itemScoreLabelNode = SKLabelNode()
+        itemScoreLabelNode.fontColor = UIColor.black
+        itemScoreLabelNode.position = CGPoint(x: 10, y: self.frame.size.height - 120)
+        itemScoreLabelNode.zPosition = 100 // 一番手前に表示する
+        itemScoreLabelNode.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
+        itemScoreLabelNode.text = "Item:\(itemScore)"
+        self.addChild(itemScoreLabelNode)
     }
 }
