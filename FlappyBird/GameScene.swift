@@ -36,8 +36,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let musicURL = Bundle.main.url(forResource: "bgm_maoudamashii_8bit27", withExtension: "m4a")
     
     // 効果音
-    let sound1 = SKAction.playSoundFileNamed("cancel.mp3", waitForCompletion: true)
-    let sound2 = SKAction.playSoundFileNamed("cursor.mp3", waitForCompletion: true)
+    let sound1 = SKAction.playSoundFileNamed("se_maoudamashii_system49.mp3", waitForCompletion: true)
+    let sound2 = SKAction.playSoundFileNamed("se_maoudamashii_system20.mp3", waitForCompletion: true)
     
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {

@@ -15,8 +15,8 @@
 		188C67B9256CF03600033DC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 188C67B8256CF03600033DC9 /* Assets.xcassets */; };
 		188C67BC256CF03600033DC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188C67BA256CF03600033DC9 /* LaunchScreen.storyboard */; };
 		189C7EDB2577AF2B00B848B4 /* bgm_maoudamashii_8bit27.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 189C7EDA2577AF2B00B848B4 /* bgm_maoudamashii_8bit27.m4a */; };
-		189C7EE22577C2F000B848B4 /* cancel.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 189C7EE02577C2F000B848B4 /* cancel.mp3 */; };
-		189C7EE32577C2F000B848B4 /* cursor.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 189C7EE12577C2F000B848B4 /* cursor.mp3 */; };
+		189C7EEC2577C87900B848B4 /* se_maoudamashii_system49.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 189C7EEA2577C87800B848B4 /* se_maoudamashii_system49.mp3 */; };
+		189C7EED2577C87900B848B4 /* se_maoudamashii_system20.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 189C7EEB2577C87900B848B4 /* se_maoudamashii_system20.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		188C67BB256CF03600033DC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		188C67BD256CF03600033DC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		189C7EDA2577AF2B00B848B4 /* bgm_maoudamashii_8bit27.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = bgm_maoudamashii_8bit27.m4a; sourceTree = "<group>"; };
-		189C7EE02577C2F000B848B4 /* cancel.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cancel.mp3; sourceTree = "<group>"; };
-		189C7EE12577C2F000B848B4 /* cursor.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cursor.mp3; sourceTree = "<group>"; };
+		189C7EEA2577C87800B848B4 /* se_maoudamashii_system49.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_maoudamashii_system49.mp3; sourceTree = "<group>"; };
+		189C7EEB2577C87900B848B4 /* se_maoudamashii_system20.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = se_maoudamashii_system20.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,8 +69,8 @@
 				188C67B3256CF03200033DC9 /* ViewController.swift */,
 				188616512570B7F000AE39BB /* GameScene.swift */,
 				189C7EDA2577AF2B00B848B4 /* bgm_maoudamashii_8bit27.m4a */,
-				189C7EE02577C2F000B848B4 /* cancel.mp3 */,
-				189C7EE12577C2F000B848B4 /* cursor.mp3 */,
+				189C7EEB2577C87900B848B4 /* se_maoudamashii_system20.mp3 */,
+				189C7EEA2577C87800B848B4 /* se_maoudamashii_system49.mp3 */,
 				188C67B5256CF03200033DC9 /* Main.storyboard */,
 				188C67B8256CF03600033DC9 /* Assets.xcassets */,
 				188C67BA256CF03600033DC9 /* LaunchScreen.storyboard */,
@@ -138,10 +138,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				188C67BC256CF03600033DC9 /* LaunchScreen.storyboard in Resources */,
+				189C7EED2577C87900B848B4 /* se_maoudamashii_system20.mp3 in Resources */,
+				189C7EEC2577C87900B848B4 /* se_maoudamashii_system49.mp3 in Resources */,
 				189C7EDB2577AF2B00B848B4 /* bgm_maoudamashii_8bit27.m4a in Resources */,
 				188C67B9256CF03600033DC9 /* Assets.xcassets in Resources */,
-				189C7EE22577C2F000B848B4 /* cancel.mp3 in Resources */,
-				189C7EE32577C2F000B848B4 /* cursor.mp3 in Resources */,
 				188C67B7256CF03200033DC9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
