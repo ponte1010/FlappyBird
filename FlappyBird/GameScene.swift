@@ -12,6 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var scrollNode:SKNode!
     var wallNode:SKNode!
+    var ramenNode:SKNode!
     var bird:SKSpriteNode!
     
     // 衝突判定カテゴリー
@@ -55,12 +56,16 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         wallNode = SKNode()
         scrollNode.addChild(wallNode)
         
+        // ラーメン用のノード
+        ramenNode = SKNode()
+        scrollNode.addChild(ramenNode)
+        
         // 各種スプライトを生成する処理をメソッドに分割
         setupGround()
         setupCloud()
         setupWall()
         setupBird()
-        
+        setupRamen()
         setupScoreLabel()
     }
     
@@ -367,4 +372,59 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         itemScoreLabelNode.text = "Item:\(itemScore)"
         self.addChild(itemScoreLabelNode)
     }
+    
+    func setupRamen() {
+        // ラーメンの画像を読み込む
+        let ramenTexture = SKTexture(imageNamed: "shouyu-ramen")
+        ramenTexture.filteringMode = .linear
+        
+        // 移動する距離を計算
+        let movingDistance = CGFloat(self.frame.size.width + ramenTexture.size().width * 3)
+        
+        // 画面外まで移動するアクションを作成
+        let moveRamen = SKAction.moveBy(x: -movingDistance, y: 0, duration:4)
+        
+        // 自身を取り除くアクションを作成
+        let removeRamen = SKAction.removeFromParent()
+        
+        // 2つのアニメーションを順に実行するアクションを作成
+        let ramenAnimation = SKAction.sequence([moveRamen, removeRamen])
+        
+        // ラーメンを生成するアクションを作成
+        let createRamenAnimation = SKAction.run({
+            // 画面のY軸の中央値
+            let center_y = self.frame.size.height / 2
+            
+            // ラーメンのY座標を上下ランダムにさせるときの最大値
+            let random_y_range = self.frame.size.height / 8
+            
+            // ラーメンのY軸の下限
+            let ramen_lowest_y = UInt32(center_y - ramenTexture.size().height / 2 - random_y_range / 2)
+            
+            // 1〜random_y_rangeまでのランダムな整数を生成
+            let random_y = arc4random_uniform(UInt32(random_y_range))
+            
+            // Y軸の下限にランダムな値を足して、ラーメンのY座標を決定
+            let ramen_y = CGFloat(ramen_lowest_y + random_y)
+            
+            // ラーメンのスプライトを作成
+            let ramen = SKSpriteNode(texture: ramenTexture)
+            ramen.position = CGPoint(x: self.frame.size.width + ramenTexture.size().width * 3, y: ramen_y)
+            ramen.zPosition = -20
+            
+            // スプライトにアクションを設定する
+            ramen.run(ramenAnimation)
+            
+            self.ramenNode.addChild(ramen)
+        })
+        
+        // 次のラーメン作成までの時間待ちのアクションを作成
+        let waitAnimation = SKAction.wait(forDuration: 2)
+        
+        // ラーメンを作成->時間待ち->ラーメンを作成を無限に繰り返すアクションを作成
+        let repeatForeverAnimation = SKAction.repeatForever(SKAction.sequence([createRamenAnimation, waitAnimation]))
+        
+        ramenNode.run(repeatForeverAnimation)
+    }
+    
 }
