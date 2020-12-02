@@ -26,8 +26,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var bestScoreLabelNode:SKLabelNode!
     let userDefaults:UserDefaults = UserDefaults.standard
     
+    // BGM用のパラメーターを作成
+    var backgroundMusic = SKAudioNode()
+    // BGMで流れるゲーム音楽
+    let musicURL = Bundle.main.url(forResource: "bgm_maoudamashii_8bit27", withExtension: "m4a")
+    
     // SKView上にシーンが表示されたときに呼ばれるメソッド
     override func didMove(to view: SKView) {
+        
+        // BGM用の音楽をセットする
+        backgroundMusic = SKAudioNode(url: musicURL!)
+        // GameSceneに追加する。
+        addChild(backgroundMusic)
         
         // 重力を設定
         physicsWorld.gravity = CGVector(dx: 0, dy: -4)
