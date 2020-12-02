@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let groundCategory: UInt32 = 1 << 1     // 0...00010
     let wallCategory: UInt32 = 1 << 2       // 0...00100
     let scoreCategory: UInt32 = 1 << 3      // 0...01000
+    let ramenCategory: UInt32 = 1 << 4      // 0...10000
     
     // スコア用
     var score = 0
@@ -312,6 +313,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 userDefaults.set(bestScore, forKey: "BEST")
                 userDefaults.synchronize()
             }
+        } else if (contact.bodyA.categoryBitMask & ramenCategory) == ramenCategory || (contact.bodyB.categoryBitMask & ramenCategory) == ramenCategory {
+            // ラーメンと衝突した
+            print("ItemScoreUp")
+            itemScore += 1
+            itemScoreLabelNode.text = "Item:\(itemScore)"
+            ramenNode.removeAllChildren()
         } else {
             // 壁か地面と衝突した
             print("GameOver")
@@ -331,6 +338,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func restart() {
         score = 0
         scoreLabelNode.text = "Score:\(score)"
+        itemScore = 0
+        itemScoreLabelNode.text = "Item:\(itemScore)"
         
         bird.position = CGPoint(x: self.frame.size.width * 0.2, y:self.frame.size.height * 0.7)
         bird.physicsBody?.velocity = CGVector.zero
@@ -411,6 +420,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             let ramen = SKSpriteNode(texture: ramenTexture)
             ramen.position = CGPoint(x: self.frame.size.width + ramenTexture.size().width * 3, y: ramen_y)
             ramen.zPosition = -20
+            
+            // スプライトに物理演算を設定
+            ramen.physicsBody = SKPhysicsBody(rectangleOf: ramenTexture.size())
+            ramen.physicsBody?.categoryBitMask = self.ramenCategory
+            ramen.physicsBody?.contactTestBitMask = self.birdCategory
+            
+            // 衝突の時に動かないよう設定
+            ramen.physicsBody?.isDynamic = false
             
             // スプライトにアクションを設定する
             ramen.run(ramenAnimation)
