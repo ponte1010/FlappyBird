@@ -323,7 +323,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             itemScore += 1
             itemScoreLabelNode.text = "Item:\(itemScore)"
             self.run(sound1)
-            ramenNode.removeAllChildren()
+            if (contact.bodyA.categoryBitMask & ramenCategory) == ramenCategory {
+                contact.bodyA.node?.removeFromParent()
+            } else {
+                contact.bodyB.node?.removeFromParent()
+            }
         } else {
             // 壁か地面と衝突した
             print("GameOver")
@@ -397,7 +401,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let movingDistance = CGFloat(self.frame.size.width + ramenTexture.size().width * 3)
         
         // 画面外まで移動するアクションを作成
-        let moveRamen = SKAction.moveBy(x: -movingDistance, y: 0, duration:2)
+        let moveRamen = SKAction.moveBy(x: -movingDistance, y: 0, duration:4)
         
         // 自身を取り除くアクションを作成
         let removeRamen = SKAction.removeFromParent()
